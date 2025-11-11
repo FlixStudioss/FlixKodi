@@ -49,7 +49,25 @@
         </assets>
     </extension>
 </addon>
-<addon id="plugin.video.flixbalkan" name="[B][COLOR limegreen]Flix[/B][COLOR white]Balkan[/COLOR]" version="2.0.0" provider-name="FlixStudios">
+<addon id="plugin.program.flixgen" name="[B][COLOR limegreen]Flix[/B][COLOR white]Gen[/COLOR]" version="1.0.0" provider-name="FlixStudios">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+		<import addon="pvr.stalker"/>
+    </requires>
+	<extension point="xbmc.python.pluginsource" library="flixgen.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>FlixGen - MAC Address Generator for Stalker</summary>
+        <description lang="en">FlixGen - MAC Address Generator for PVR Stalker Client playlist selection</description>
+        <platform>all</platform>
+        <language>en</language>
+        <license>GPLv2</license>
+		<assets>
+        <icon>icon.png</icon>
+        </assets>
+    </extension>
+</addon><addon id="plugin.video.flixbalkan" name="[B][COLOR limegreen]Flix[/B][COLOR white]Balkan[/COLOR]" version="2.0.0" provider-name="FlixStudios">
   <requires>
     <import addon="xbmc.python" version="3.0.0"/>
     <import addon="script.module.requests" version="2.22.0"/>
@@ -66,7 +84,24 @@
     <icon>icon.png</icon>
     </assets>
   </extension>
-</addon><addon id="script.module.resolveurl" name="ResolveURL" version="5.1.185" provider-name="gujal">
+</addon><addon id="plugin.video.flixstalker" name="[B][COLOR limegreen]Flix[/B][COLOR white]Stalker[/COLOR]" version="1.0.1" provider-name="FlixStudios">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+		<import addon="script.module.requests" version="2.31.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">FlixStalker - Stalker Portal Client</summary>
+        <description lang="en">FlixStalker - Selects MAC address from remote JSON and connects to Stalker portal for IPTV streaming</description>
+        <platform>all</platform>
+		<assets>
+    <icon>icon.png</icon>
+    </assets>
+    </extension>
+</addon>
+<addon id="script.module.resolveurl" name="ResolveURL" version="5.1.185" provider-name="gujal">
     <requires>
         <!-- <import addon="xbmc.python" version="3.0.0" /> -->
         <import addon="script.module.six" />

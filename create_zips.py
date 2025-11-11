@@ -78,12 +78,16 @@ def main():
     # Create zips directory structure
     repo_zip_dir = zips_dir / 'repository.flixkodi'
     wizard_zip_dir = zips_dir / 'plugin.program.flixwizard'
+    flixgen_zip_dir = zips_dir / 'plugin.program.flixgen'
     balkan_zip_dir = zips_dir / 'plugin.video.flixbalkan'
+    stalker_zip_dir = zips_dir / 'plugin.video.flixstalker'
     resolveurl_zip_dir = zips_dir / 'script.module.resolveurl'
     
     repo_zip_dir.mkdir(parents=True, exist_ok=True)
     wizard_zip_dir.mkdir(parents=True, exist_ok=True)
+    flixgen_zip_dir.mkdir(parents=True, exist_ok=True)
     balkan_zip_dir.mkdir(parents=True, exist_ok=True)
+    stalker_zip_dir.mkdir(parents=True, exist_ok=True)
     resolveurl_zip_dir.mkdir(parents=True, exist_ok=True)
     
     # Create repository zip
@@ -104,6 +108,15 @@ def main():
         '1.0.0'
     )
     
+    # Create FlixGen zip
+    flixgen_source = flixkodi_dir / 'plugin.program.flixgen'
+    create_addon_zip(
+        str(flixgen_source),
+        str(flixgen_zip_dir),
+        'plugin.program.flixgen',
+        '1.0.0'
+    )
+    
     # Create FlixBalkan zip
     balkan_source = flixkodi_dir / 'plugin.video.flixbalkan'
     create_addon_zip(
@@ -111,6 +124,15 @@ def main():
         str(balkan_zip_dir),
         'plugin.video.flixbalkan',
         '2.0.0'
+    )
+    
+    # Create FlixStalker zip
+    stalker_source = flixkodi_dir / 'plugin.video.flixstalker'
+    create_addon_zip(
+        str(stalker_source),
+        str(stalker_zip_dir),
+        'plugin.video.flixstalker',
+        '1.0.1'
     )
     
     # Create ResolveURL zip
@@ -133,10 +155,20 @@ def main():
     shutil.copy(wizard_source / 'addon.xml', wizard_zip_dir / 'addon.xml')
     shutil.copy(wizard_source / 'icon.png', wizard_zip_dir / 'icon.png')
     
+    # FlixGen files
+    shutil.copy(flixgen_source / 'addon.xml', flixgen_zip_dir / 'addon.xml')
+    if (flixgen_source / 'icon.png').exists():
+        shutil.copy(flixgen_source / 'icon.png', flixgen_zip_dir / 'icon.png')
+    
     # FlixBalkan files
     shutil.copy(balkan_source / 'addon.xml', balkan_zip_dir / 'addon.xml')
     if (balkan_source / 'icon.png').exists():
         shutil.copy(balkan_source / 'icon.png', balkan_zip_dir / 'icon.png')
+    
+    # FlixStalker files
+    shutil.copy(stalker_source / 'addon.xml', stalker_zip_dir / 'addon.xml')
+    if (stalker_source / 'icon.png').exists():
+        shutil.copy(stalker_source / 'icon.png', stalker_zip_dir / 'icon.png')
     
     # ResolveURL files
     shutil.copy(resolveurl_source / 'addon.xml', resolveurl_zip_dir / 'addon.xml')
@@ -146,7 +178,7 @@ def main():
     # Create addons.xml
     create_addons_xml(
         str(zips_dir),
-        [str(repo_source), str(wizard_source), str(balkan_source), str(resolveurl_source)]
+        [str(repo_source), str(wizard_source), str(flixgen_source), str(balkan_source), str(stalker_source), str(resolveurl_source)]
     )
     
     print("\nAll done! Upload the 'zips' folder to GitHub.")
