@@ -19,7 +19,7 @@
         <description lang="en">[COLOR limegreen]Flix[/COLOR]Wizard offers many maintenance features, selective add-on data saving, and automated build installs.</description>
         <platform>all</platform>
         <reuselanguageinvoker>false</reuselanguageinvoker>
-        <source>https://www.github.com/FlixKodi/plugin.program.flixwizard/</source>
+        <source>https://github.com/FlixStudioss/FlixKodi/tree/main/FlixKodi/plugin.program.flixwizard</source>
         <news>
 1.0.0
  - Initial FlixWizard release for Kodi 21 (Omega)

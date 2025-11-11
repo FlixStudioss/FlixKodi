@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
+<addon id="repository.flixkodi" name="FlixKodi Repository" version="1.0.2" provider-name="FlixKodi">
+    <extension point="xbmc.addon.repository">
+        <dir minversion="21.0">
+            <info compressed="false">https://raw.githubusercontent.com/FlixStudioss/FlixKodi/main/zips/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/FlixStudioss/FlixKodi/main/zips/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/FlixStudioss/FlixKodi/main/zips/</datadir>
+        </dir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>FlixKodi Repository</summary>
+        <description>Official repository for FlixKodi addons including FlixWizard</description>
+        <disclaimer></disclaimer>
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+        </assets>
+    </extension>
+</addon>
 <addon id="plugin.program.flixwizard" name="[COLOR limegreen]Flix[/COLOR]Wizard" version="1.0.0" provider-name="FlixKodi">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
@@ -20,30 +38,12 @@
         <description lang="en">[COLOR limegreen]Flix[/COLOR]Wizard offers many maintenance features, selective add-on data saving, and automated build installs.</description>
         <platform>all</platform>
         <reuselanguageinvoker>false</reuselanguageinvoker>
-        <source>https://www.github.com/FlixKodi/plugin.program.flixwizard/</source>
+        <source>https://github.com/FlixStudioss/FlixKodi/tree/main/FlixKodi/plugin.program.flixwizard</source>
         <news>
 1.0.0
  - Initial FlixWizard release for Kodi 21 (Omega)
  - Forked from OpenWizard
         </news>
-        <assets>
-            <icon>icon.png</icon>
-        </assets>
-    </extension>
-</addon>
-<addon id="repository.flixkodi" name="FlixKodi Repository" version="1.0.0" provider-name="FlixKodi">
-    <extension point="xbmc.addon.repository" name="FlixKodi Repository">
-        <dir>
-            <info compressed="false">https://raw.githubusercontent.com/FlixStudioss/FlixKodi/main/zips/addons.xml</info>
-            <checksum>https://raw.githubusercontent.com/FlixStudioss/FlixKodi/main/zips/addons.xml.md5</checksum>
-            <datadir zip="true">https://raw.githubusercontent.com/FlixStudioss/FlixKodi/main/zips/</datadir>
-        </dir>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary>FlixKodi Repository</summary>
-        <description>Official repository for FlixKodi addons including FlixWizard</description>
-        <disclaimer></disclaimer>
-        <platform>all</platform>
         <assets>
             <icon>icon.png</icon>
         </assets>
