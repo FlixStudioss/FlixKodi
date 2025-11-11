@@ -45,12 +45,9 @@ def check_paths():
     path = os.path.split(CONFIG.ADDON_PATH)
     if not CONFIG.ADDON_ID == path[1]:
         dialog.ok(CONFIG.ADDONTITLE,
-                      '[COLOR {0}]Please make sure that the plugin folder is the same as the add-on id.[/COLOR]'.format(
-                          CONFIG.COLOR2),
-                      '[COLOR {0}]Plugin ID:[/COLOR] [COLOR {1}]{2}[/COLOR]'.format(CONFIG.COLOR2, CONFIG.COLOR1,
-                                                                                    CONFIG.ADDON_ID),
-                      '[COLOR {0}]Plugin Folder:[/COLOR] [COLOR {1}]{2}[/COLOR]'.format(CONFIG.COLOR2, CONFIG.COLOR1,
-                                                                                        path))
+                      '[COLOR {0}]Please make sure that the plugin folder is the same as the add-on id.[/COLOR]\n'.format(CONFIG.COLOR2) +
+                      '[COLOR {0}]Plugin ID:[/COLOR] [COLOR {1}]{2}[/COLOR]\n'.format(CONFIG.COLOR2, CONFIG.COLOR1, CONFIG.ADDON_ID) +
+                      '[COLOR {0}]Plugin Folder:[/COLOR] [COLOR {1}]{2}[/COLOR]'.format(CONFIG.COLOR2, CONFIG.COLOR1, path))
         logging.log("[Path Check] ADDON_ID and plugin folder doesnt match. {0} / {1} ".format(CONFIG.ADDON_ID, path))
     else:
         logging.log("[Path Check] Good!")
@@ -334,7 +331,7 @@ def check_sources():
                 kept = len(bad) - len(remove)
                 removed = len(remove)
                 dialog.ok(CONFIG.ADDONTITLE,
-                              "[COLOR {0}]Checking sources for broken paths has been completed".format(CONFIG.COLOR2),
+                              "[COLOR {0}]Checking sources for broken paths has been completed\n".format(CONFIG.COLOR2) +
                               "Working: [COLOR {0}]{1}[/COLOR] | Kept: [COLOR {2}]{3}[/COLOR] | Removed: [COLOR {4}]{5}[/COLOR][/COLOR]".format(CONFIG.COLOR2, CONFIG.COLOR1, alive, CONFIG.COLOR1, kept, CONFIG.COLOR1, removed))
             else:
                 logging.log("No Bad Sources to be removed.")

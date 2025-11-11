@@ -136,7 +136,7 @@ class Backup:
             tempzipname = ''
             zipname = os.path.join(CONFIG.MYBUILDS, name)
             try:
-                zipf = zipfile.ZipFile(xbmc.translatePath(zipname), mode='w', allowZip64=True)
+                zipf = zipfile.ZipFile(xbmcvfs.translatePath(zipname), mode='w', allowZip64=True)
             except:
                 try:
                     tempzipname = os.path.join(CONFIG.PACKAGES, '{0}.zip'.format(name))
@@ -218,8 +218,7 @@ class Backup:
                                     zipf.write(fn, fn[len(CONFIG.ADDONS):], zipfile.ZIP_DEFLATED)
                                     added.append(depends)
             self.dialog.ok(CONFIG.ADDONTITLE,
-                           "[COLOR {0}]{1}[/COLOR] [COLOR {2}]Backup successful:[/COLOR]".format(CONFIG.COLOR1, name,
-                                                                                                 CONFIG.COLOR2),
+                           "[COLOR {0}]{1}[/COLOR] [COLOR {2}]Backup successful:[/COLOR]\n".format(CONFIG.COLOR1, name, CONFIG.COLOR2) +
                            "[COLOR {0}]{1}[/COLOR]".format(CONFIG.COLOR1, zipname))
 
     def backup_build(self, name=""):
@@ -255,7 +254,7 @@ class Backup:
             tools.convert_special(CONFIG.HOME, True)
             extractsize = 0
             try:
-                zipf = zipfile.ZipFile(xbmc.translatePath(zipname), mode='w', allowZip64=True)
+                zipf = zipfile.ZipFile(xbmcvfs.translatePath(zipname), mode='w', allowZip64=True)
             except:
                 try:
                     tempzipname = os.path.join(CONFIG.PACKAGES, '{0}.zip'.format(name))
@@ -446,12 +445,11 @@ class Backup:
 
             if len(binaries) > 0:
                 self.dialog.ok(CONFIG.ADDONTITLE,
-                               "[COLOR {0}]The following add-ons were excluded from the backup because they are platform specific:[/COLOR]".format(
-                                   CONFIG.COLOR2), "[COLOR {0}]{1}[/COLOR]".format(CONFIG.COLOR1, ', '.join(binaries)))
+                               "[COLOR {0}]The following add-ons were excluded from the backup because they are platform specific:[/COLOR]\n".format(CONFIG.COLOR2) +
+                               "[COLOR {0}]{1}[/COLOR]".format(CONFIG.COLOR1, ', '.join(binaries)))
 
             self.dialog.ok(CONFIG.ADDONTITLE,
-                           "[COLOR {0}]{1}[/COLOR] [COLOR {2}]Backup successful:[/COLOR]".format(CONFIG.COLOR1, name,
-                                                                                                 CONFIG.COLOR2),
+                           "[COLOR {0}]{1}[/COLOR] [COLOR {2}]Backup successful:[/COLOR]\n".format(CONFIG.COLOR1, name, CONFIG.COLOR2) +
                            "[COLOR {0}]{1}[/COLOR]".format(CONFIG.COLOR1, zipname))
 
     def _backup_info(self, name, extractsize, programs, video, music, picture, repos, scripts, binaries):
@@ -462,10 +460,10 @@ class Backup:
         temp_txt = os.path.join(CONFIG.PACKAGES, txtname)
         info_txt = os.path.join(backup_path, txtname)
         
-        _skin_root = xbmc.translatePath('special://skin/')
+        _skin_root = xbmcvfs.translatePath('special://skin/')
         _skin_id = os.path.basename(os.path.normpath(_skin_root))
         _skin = xbmcaddon.Addon(_skin_id)
-        _skin_name = xbmc.translatePath(_skin.getAddonInfo('name'))
+        _skin_name = xbmcvfs.translatePath(_skin.getAddonInfo('name'))
 
         with open(temp_txt, 'w') as f:
             f.write('name="{0}"\n'.format(name))
@@ -573,7 +571,8 @@ class Backup:
         else:
             logging.log("[Back Up] Type = guifix: guisettings.xml not found")
         if name == "":
-            self.dialog.ok(CONFIG.ADDONTITLE, "[COLOR {0}]GUI Fix backup successful:[/COLOR]".format(CONFIG.COLOR2),
+            self.dialog.ok(CONFIG.ADDONTITLE,
+                           "[COLOR {0}]GUI Fix backup successful:[/COLOR]\n".format(CONFIG.COLOR2) +
                            "[COLOR {0}]{1}[/COLOR]".format(CONFIG.COLOR1, guizipname))
 
     def backup_theme(self, name=""):
@@ -759,9 +758,7 @@ class Backup:
             zipf.close()
             logging.log("[Back Up] Type = theme: {0}".format(str(e)))
             self.dialog.ok(CONFIG.ADDONTITLE,
-                           "[COLOR {0}]{1}[/COLOR][COLOR {2}] theme zip failed:[/COLOR]".format(CONFIG.COLOR1,
-                                                                                                themename,
-                                                                                                CONFIG.COLOR2),
+                           "[COLOR {0}]{1}[/COLOR][COLOR {2}] theme zip failed:[/COLOR]\n".format(CONFIG.COLOR1, themename, CONFIG.COLOR2) +
                            "[COLOR {0}]{1}[/COLOR]".format(CONFIG.COLOR1, str(e)))
             if not tempzipname == '':
                 try:
@@ -781,9 +778,7 @@ class Backup:
                 xbmcvfs.copy(tempzipname, zipname)
                 xbmcvfs.delete(tempzipname)
         self.dialog.ok(CONFIG.ADDONTITLE,
-                       "[COLOR {0}]{1}[/COLOR][COLOR {2}] theme zip successful:[/COLOR]".format(CONFIG.COLOR1,
-                                                                                                themename,
-                                                                                                CONFIG.COLOR2),
+                       "[COLOR {0}]{1}[/COLOR][COLOR {2}] theme zip successful:[/COLOR]\n".format(CONFIG.COLOR1, themename, CONFIG.COLOR2) +
                        "[COLOR {0}]{1}[/COLOR]".format(CONFIG.COLOR1, zipname))
 
     def backup_addon_data(self, name=""):
@@ -801,7 +796,7 @@ class Backup:
             tempzipname = ''
             zipname = os.path.join(CONFIG.MYBUILDS, name)
             try:
-                zipf = zipfile.ZipFile(xbmc.translatePath(zipname), mode='w', allowZip64=True)
+                zipf = zipfile.ZipFile(xbmcvfs.translatePath(zipname), mode='w', allowZip64=True)
             except:
                 try:
                     tempzipname = os.path.join(CONFIG.PACKAGES, '{0}.zip'.format(name))
@@ -902,8 +897,7 @@ class Backup:
                     xbmcvfs.delete(tempzipname)
             self.progress_dialog.close()
             self.dialog.ok(CONFIG.ADDONTITLE,
-                           "[COLOR {0}]{1}[/COLOR] [COLOR {2}]backup successful:[/COLOR]".format(CONFIG.COLOR1, name,
-                                                                                                 CONFIG.COLOR2),
+                           "[COLOR {0}]{1}[/COLOR] [COLOR {2}]backup successful:[/COLOR]\n".format(CONFIG.COLOR1, name, CONFIG.COLOR2) +
                            "[COLOR {0}]{1}[/COLOR]".format(CONFIG.COLOR1, zipname))
 
 
