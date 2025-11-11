@@ -65,16 +65,29 @@ from resources.libs.common.config import CONFIG
 
 
 def read_from_file(file, mode='r'):
-    f = open(file, mode)
-    a = f.read()
-    f.close()
-    return a
+    try:
+        f = open(file, mode, encoding='utf-8', errors='replace')
+        a = f.read()
+        f.close()
+        return a
+    except:
+        # Fallback for binary files or other encoding issues
+        f = open(file, mode, encoding='latin-1', errors='replace')
+        a = f.read()
+        f.close()
+        return a
 
 
 def write_to_file(file, content, mode='w'):
-    f = open(file, mode)
-    f.write(content)
-    f.close()
+    try:
+        f = open(file, mode, encoding='utf-8', errors='replace')
+        f.write(content)
+        f.close()
+    except:
+        # Fallback for binary files or other encoding issues
+        f = open(file, mode, encoding='latin-1', errors='replace')
+        f.write(content)
+        f.close()
 
 
 def remove_folder(path):
