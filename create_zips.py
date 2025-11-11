@@ -79,10 +79,12 @@ def main():
     repo_zip_dir = zips_dir / 'repository.flixkodi'
     wizard_zip_dir = zips_dir / 'plugin.program.flixwizard'
     balkan_zip_dir = zips_dir / 'plugin.video.flixbalkan'
+    resolveurl_zip_dir = zips_dir / 'script.module.resolveurl'
     
     repo_zip_dir.mkdir(parents=True, exist_ok=True)
     wizard_zip_dir.mkdir(parents=True, exist_ok=True)
     balkan_zip_dir.mkdir(parents=True, exist_ok=True)
+    resolveurl_zip_dir.mkdir(parents=True, exist_ok=True)
     
     # Create repository zip
     repo_source = flixkodi_dir / 'repository.flixkodi'
@@ -111,6 +113,15 @@ def main():
         '2.0.0'
     )
     
+    # Create ResolveURL zip
+    resolveurl_source = flixkodi_dir / 'script.module.resolveurl'
+    create_addon_zip(
+        str(resolveurl_source),
+        str(resolveurl_zip_dir),
+        'script.module.resolveurl',
+        '5.1.185'
+    )
+    
     # Copy addon.xml and icon.png to zip directories
     import shutil
     
@@ -124,13 +135,18 @@ def main():
     
     # FlixBalkan files
     shutil.copy(balkan_source / 'addon.xml', balkan_zip_dir / 'addon.xml')
-    if (balkan_source / 'logo.png').exists():
-        shutil.copy(balkan_source / 'logo.png', balkan_zip_dir / 'icon.png')
+    if (balkan_source / 'icon.png').exists():
+        shutil.copy(balkan_source / 'icon.png', balkan_zip_dir / 'icon.png')
+    
+    # ResolveURL files
+    shutil.copy(resolveurl_source / 'addon.xml', resolveurl_zip_dir / 'addon.xml')
+    if (resolveurl_source / 'icon.png').exists():
+        shutil.copy(resolveurl_source / 'icon.png', resolveurl_zip_dir / 'icon.png')
     
     # Create addons.xml
     create_addons_xml(
         str(zips_dir),
-        [str(repo_source), str(wizard_source), str(balkan_source)]
+        [str(repo_source), str(wizard_source), str(balkan_source), str(resolveurl_source)]
     )
     
     print("\nAll done! Upload the 'zips' folder to GitHub.")

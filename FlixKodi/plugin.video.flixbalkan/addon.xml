@@ -3,7 +3,7 @@
   <requires>
     <import addon="xbmc.python" version="3.0.0"/>
     <import addon="script.module.requests" version="2.22.0"/>
-	<import addon="script.module.resolveurl" version="5.1.0"/>
+	<import addon="script.module.resolveurl" version="5.1.185"/>
   </requires>
   <extension point="xbmc.python.pluginsource" library="resources/lib/addon.py">
     <provides>video</provides>
@@ -13,7 +13,7 @@
     <description>FlixBalkan Video Addon - Balkan Content Streaming</description>
     <platform>all</platform>
 	<assets>
-    <icon>logo.png</icon>
+    <icon>icon.png</icon>
     </assets>
   </extension>
 </addon>
